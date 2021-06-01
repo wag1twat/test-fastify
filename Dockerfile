@@ -1,7 +1,9 @@
-FROM node:15
+FROM node
 
 # создание директории приложения
-WORKDIR /usr/src/app
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin:$PATH
 
 # установка зависимостей
 # символ астериск ("*") используется для того чтобы по возможности 
@@ -19,7 +21,5 @@ RUN npm install
 COPY . .
 
 RUN tsc
-
-EXPOSE 80
 
 CMD [ "node", "dist/app.js" ]

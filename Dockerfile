@@ -10,8 +10,6 @@ ENV PATH /app/node_modules/.bin:$PATH
 # скопировать оба файла: package.json и package-lock.json
 COPY package*.json ./
 
-RUN npm install -g typescript
-
 RUN npm install
 
 # Если вы создаете сборку для продакшн

@@ -3,6 +3,7 @@ import { RouteGenericInterface } from "fastify/types/route";
 import fs from "fs";
 import { IncomingMessage, Server } from "http";
 import { InvalidParamsError } from "../errors";
+import { isPath } from "../utils";
 
 interface Req
   extends FastifyRequest<RouteGenericInterface, Server, IncomingMessage> {
@@ -34,14 +35,14 @@ export const getFileRoute: RouteOptions = {
       },
     },
   },
-  preHandler: async (request: Req, reply) => {},
-  handler: async (request: Req, reply) => {
-    if (typeof request.query.path !== "string") {
+  preHandler: async (request: Req, reply) => {
+    if (!isPath(request.query.path)) {
       return reply
         .status(404)
         .send(InvalidParamsError({ query: request.query }));
     }
-
+  },
+  handler: async (request: Req, reply) => {
     try {
       const result = fs.readdirSync(request.query.path, {
         withFileTypes: true,

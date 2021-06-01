@@ -39,7 +39,9 @@ export const getFolderRoute: RouteOptions = {
     if (!isPath(request.query.path)) {
       return reply
         .status(404)
-        .send(InvalidParamsError({ query: request.query }));
+        .send(
+          InvalidParamsError(JSON.stringify({ query: request.query.path }))
+        );
     }
   },
   handler: async (request: Req, reply) => {

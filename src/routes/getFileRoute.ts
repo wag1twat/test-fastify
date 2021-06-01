@@ -39,16 +39,14 @@ export const getFileRoute: RouteOptions = {
     if (!isPath(request.query.path)) {
       return reply
         .status(404)
-        .send(InvalidParamsError({ query: request.query }));
+        .send(InvalidParamsError({ query: request.query.path }));
     }
   },
   handler: async (request: Req, reply) => {
     try {
-      const result = fs.readdirSync(request.query.path, {
-        withFileTypes: true,
-      });
+      const result = fs.readFileSync(request.query.path);
 
-      return reply.status(200).send({ result });
+      return reply.status(200).send(result);
     } catch (err) {
       return reply.status(404).send(err);
     }

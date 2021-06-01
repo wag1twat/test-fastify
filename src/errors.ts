@@ -1,4 +1,4 @@
-export const InvalidParamsError = (body: object) => {
+export const InvalidParamsError = (body: any) => {
   return {
     code: "INVALID_PARAMS",
     message: "Invalid params",

@@ -20,4 +20,4 @@ COPY . .
 
 RUN tsc
 
-CMD [ "node", "dist/app.js" ]
+CMD [ "node", "build/app.js" ]

@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "files-shared-back",
   "author": "yuri-shulga",
-  "main": "dist/app.js",
+  "main": "build/app.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
-    "dev": "tsc && nodemon dist/app.js",
+    "start": "tsc && node build/app.js",
+    "dev": "tsc && nodemon build/app.js",
     "build": "tsc",
     "build-docker": "docker build . -t yuri-shulga/files-shared-back",
     "start-docker": "docker run -p 49160:80 -d yuri-shulga/files-shared-back",

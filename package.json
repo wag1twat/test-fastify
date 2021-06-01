@@ -1,0 +1,26 @@
+{
+  "name": "files-shared-back",
+  "version": "1.0.0",
+  "description": "files-shared-back",
+  "author": "yuri-shulga",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "dev": "tsc && nodemon dist/app.js",
+    "build": "tsc",
+    "build-docker": "docker build . -t yuri-shulga/files-shared-back",
+    "start-docker": "docker run -p 49160:80 -d yuri-shulga/files-shared-back",
+    "stop-docker": "docker rm $(docker stop $(docker ps -a -q --filter ancestor=yuri-shulga/files-shared-back --format='{{.ID}}'))"
+  },
+  "dependencies": {
+    "dotenv": "^8.6.0",
+    "fastify": "^3.17.0"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^15.6.1",
+    "tslint": "^5.12.1",
+    "typescript": "^4.3.2"
+  }
+}

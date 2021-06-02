@@ -55,8 +55,8 @@ export const folderPageRoute: RouteOptions = {
         isDirectory: dir.isDirectory(),
         isFile: dir.isFile(),
         path: dir.isFile()
-          ? request.url.replace("folder", "file") + "/" + dir.name
-          : request.url + "/" + dir.name,
+          ? request.url.replace("folder", "file") + dir.name
+          : request.url + dir.name,
       }));
 
       return reply.view("folder.pug", { dirs: result, path: request.url });

@@ -18,5 +18,5 @@ head
                     li 
                         if item.isFile
                             a(href=item.path download) #{item.name}
-                        else 
+                        if item.isDirectory 
                             a(href=item.path) #{item.name}

@@ -1,0 +1,22 @@
+@import "../variables.scss", "./mixins.scss";
+
+.outline-primary-button {
+  @include base-button;
+  border-color: $primary-color;
+  background: $primary-background;
+  color: $primary-text-color;
+
+  &:hover {
+    border-color: transparent;
+    background: $primary-color-light
+      radial-gradient(circle, transparent 1%, $primary-color-light 1%)
+      center/15000%;
+    color: #fff;
+  }
+  &:active {
+    border-color: transparent;
+    background-color: $primary-color;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}

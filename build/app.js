@@ -40,10 +40,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var fastify_1 = __importDefault(require("fastify"));
+var fastify_static_1 = __importDefault(require("fastify-static"));
+var point_of_view_1 = __importDefault(require("point-of-view"));
+var pug_1 = __importDefault(require("pug"));
+var path_1 = __importDefault(require("path"));
 var dotenv_1 = __importDefault(require("dotenv"));
 var routes_1 = require("./routes");
+var staticRoot = "public";
 dotenv_1.default.config();
 var app = fastify_1.default({ logger: true });
+app.register(fastify_static_1.default, {
+    root: path_1.default.join(__dirname, staticRoot),
+    prefixAvoidTrailingSlash: true,
+});
+app.register(point_of_view_1.default, {
+    engine: {
+        pug: pug_1.default,
+    },
+    root: path_1.default.join(__dirname, staticRoot),
+});
+app.route(routes_1.rootPageRoute);
 app.route(routes_1.getFolderRoute);
 app.route(routes_1.getFileRoute);
 app.route(routes_1.copyFileRoute);

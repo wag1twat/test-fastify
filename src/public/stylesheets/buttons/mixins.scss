@@ -1,0 +1,12 @@
+@import "../variables.scss";
+
+@mixin base-button {
+  border: 1px solid;
+  border-radius: $primary-border-radius;
+  padding: 6px;
+  cursor: pointer;
+  color: $primary-text-color;
+  outline: none;
+  background-position: center;
+  transition: background 0.3s;
+}

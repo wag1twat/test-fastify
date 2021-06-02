@@ -10,9 +10,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./getFolderRoute"), exports);
-__exportStar(require("./getFileRoute"), exports);
-__exportStar(require("./copyFileRoute"), exports);
-__exportStar(require("./moveFileRoute"), exports);
-__exportStar(require("./pages"), exports);
+__exportStar(require("./rootPageRoute"), exports);
 //# sourceMappingURL=index.js.map

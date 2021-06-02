@@ -1,6 +1,6 @@
 import { RouteOptions, FastifyRequest } from "fastify";
 import { RouteGenericInterface } from "fastify/types/route";
-import fs from "fs";
+import * as fs from "fs";
 import { IncomingMessage, Server } from "http";
 import { InvalidParamsError } from "../errors";
 

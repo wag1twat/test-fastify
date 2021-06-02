@@ -1,16 +1,36 @@
 import Fastify, { FastifyInstance } from "fastify";
+import fastifyStatic from "fastify-static";
+import pointOfView from "point-of-view";
+import pug from "pug";
+import path from "path";
 import dotenv from "dotenv";
 import {
   getFileRoute,
   getFolderRoute,
   copyFileRoute,
   moveFileRoute,
+  rootPageRoute,
 } from "./routes";
+
+const staticRoot = "public";
 
 dotenv.config();
 
 const app: FastifyInstance = Fastify({ logger: true });
 
+app.register(fastifyStatic, {
+  root: path.join(__dirname, staticRoot),
+  prefixAvoidTrailingSlash: true,
+});
+
+app.register(pointOfView, {
+  engine: {
+    pug,
+  },
+  root: path.join(__dirname, staticRoot),
+});
+
+app.route(rootPageRoute);
 app.route(getFolderRoute);
 app.route(getFileRoute);
 app.route(copyFileRoute);

@@ -1,0 +1,3 @@
+.outline-primary-button{border:1px solid;border-radius:4px;padding:6px;cursor:pointer;color:#000;outline:none;background-position:center;transition:background 0.3s;border-color:#2196f3;background:#fff;color:#000}.outline-primary-button:hover{border-color:transparent;background:#90caf9 radial-gradient(circle, transparent 1%, #90caf9 1%) center/15000%;color:#fff}.outline-primary-button:active{border-color:transparent;background-color:#2196f3;background-size:100%;transition:background 0s}
+
+/*# sourceMappingURL=outline-primary-button.css.map */

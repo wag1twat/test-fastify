@@ -1,0 +1,1 @@
+{"version":3,"file":"rootPageRoute.js","sourceRoot":"","sources":["../../../src/routes/pages/rootPageRoute.ts"],"names":[],"mappings":";;;AAEa,QAAA,aAAa,GAAiB;IACzC,MAAM,EAAE,KAAK;IACb,GAAG,EAAE,GAAG;IACR,OAAO,EAAE,UAAC,CAAC,EAAE,KAAK;QAChB,KAAK,CAAC,IAAI,CAAC,WAAW,EAAE;YACtB,KAAK,EAAE,aAAa;YACpB,MAAM,EAAE,qCAAqC;SAC9C,CAAC,CAAC;IACL,CAAC;CACF,CAAC"}

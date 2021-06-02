@@ -4,22 +4,39 @@
   "description": "files-shared-back",
   "author": "yuri-shulga",
   "main": "build/app.js",
+  "type": "commonjs",
   "scripts": {
-    "start": "tsc && node build/app.js",
-    "dev": "tsc && nodemon build/app.js",
-    "build": "tsc",
+    "start": "gulp clean && gulp pug && gulp css && gulp js && tsc && gulp browserify && node build/app.js",
+    "dev": "gulp clean && gulp pug && gulp css && gulp js && tsc && gulp browserify && nodemon build/app.js",
+    "build": "gulp clean && gulp pug && gulp css && gulp js && tsc && gulp browserify",
     "build-docker": "docker build . -t yuri-shulga/files-shared-back",
     "start-docker": "docker run -p 49160:80 -d yuri-shulga/files-shared-back",
     "stop-docker": "docker rm $(docker stop $(docker ps -a -q --filter ancestor=yuri-shulga/files-shared-back --format='{{.ID}}'))"
   },
   "dependencies": {
+    "autoprefixer": "^9.8.6",
+    "browserify": "^17.0.0",
     "dotenv": "^8.6.0",
-    "fastify": "^3.17.0"
+    "fastify": "^3.17.0",
+    "fastify-static": "^4.2.2",
+    "moment": "^2.29.1",
+    "point-of-view": "^4.14.0",
+    "pug": "^3.0.2",
+    "ts-node": "^10.0.0"
   },
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^15.6.1",
+    "@types/pug": "^2.0.4",
+    "gulp": "^4.0.2",
+    "gulp-browserify": "^0.5.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "postcss-scss": "^3.0.5",
+    "precss": "^4.0.0",
     "tslint": "^5.12.1",
     "typescript": "^4.3.2"
   }

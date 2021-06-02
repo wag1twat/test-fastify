@@ -1,1 +1,2 @@
-export * from "./rootPageRoute";
+export * from "./homePageRoute";
+export * from "./folderPageRoute";

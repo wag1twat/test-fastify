@@ -2,8 +2,8 @@ import { RouteOptions, FastifyRequest } from "fastify";
 import { RouteGenericInterface } from "fastify/types/route";
 import fs from "fs";
 import { IncomingMessage, Server } from "http";
-import { InvalidParamsError } from "../errors";
-import { isPath } from "../utils";
+import { InvalidParamsError } from "../../errors";
+import { isPath } from "../../utils";
 
 interface Req
   extends FastifyRequest<RouteGenericInterface, Server, IncomingMessage> {
@@ -12,7 +12,7 @@ interface Req
   };
 }
 
-export const getFolderRoute: RouteOptions = {
+export const folderPageRoute: RouteOptions = {
   method: "GET",
   url: "/folder",
   schema: {
@@ -46,13 +46,22 @@ export const getFolderRoute: RouteOptions = {
   },
   handler: async (request: Req, reply) => {
     try {
-      const result = fs.readdirSync(request.query.path, {
+      const dirs = fs.readdirSync(request.query.path, {
         withFileTypes: true,
       });
 
-      return reply.status(200).send({ result });
+      const result = dirs.map((dir) => ({
+        name: dir.name,
+        isDirectory: dir.isDirectory(),
+        isFile: dir.isFile(),
+        path: dir.isFile()
+          ? request.url.replace("folder", "file") + "/" + dir.name
+          : request.url + "/" + dir.name,
+      }));
+
+      return reply.view("folder.pug", { dirs: result, path: request.url });
     } catch (err) {
-      return reply.status(404).send(err);
+      return reply.status(404).callNotFound();
     }
   },
 };

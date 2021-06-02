@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../src/utils/index.ts"],"names":[],"mappings":";;;AAAA,mCAAkC;AAEzB,uFAFA,eAAM,OAEA"}
+{"version":3,"sources":["../src/utils/index.ts"],"names":["isPath_1","require","Object","defineProperty","exports","enumerable","get","isPath"],"mappings":"0FAAA,IAAAA,SAAAC,QAAA,YAESC,OAAAC,eAAAC,QAAA,SAAA,CAAAC,YAAA,EAAAC,IAAA,WAAA,OAFAN,SAAAO","file":"index.js","sourcesContent":["import { isPath } from \"./isPath\";\n\nexport { isPath };\n"]}

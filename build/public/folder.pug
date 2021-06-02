@@ -1,0 +1,22 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap' rel='stylesheet')
+  link(rel='stylesheet' href='/stylesheets/normalize.css')
+  link(rel='stylesheet' href='/stylesheets/layouts.css')
+  link(rel='stylesheet' href='/stylesheets/buttons/outline-primary-button.css')
+  title #{title}
+  body
+    div(class='flex justify-center align-items-center flex-direction-column') 
+        h2 #{header}
+        div(class='flex justify-center align-items-center full-width ')
+            ul(class='full-width')
+                each item in dirs
+                    li 
+                        if item.isFile
+                            a(href=item.path download) #{item.name}
+                        else 
+                            a(href=item.path) #{item.name}

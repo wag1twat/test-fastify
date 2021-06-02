@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/routes/pages/index.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,kDAAgC"}
+{"version":3,"sources":["../src/routes/pages/index.ts"],"names":["__exportStar","require","exports"],"mappings":"ibAAAA,aAAAC,QAAA,mBAAAC,SACAF,aAAAC,QAAA,qBAAAC","file":"index.js","sourcesContent":["export * from \"./homePageRoute\";\nexport * from \"./folderPageRoute\";\n"]}

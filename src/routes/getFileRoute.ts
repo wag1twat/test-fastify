@@ -1,6 +1,8 @@
 import { RouteOptions, FastifyRequest } from "fastify";
+import mime from "mime-types";
 import { RouteGenericInterface } from "fastify/types/route";
 import * as fs from "fs";
+import path from "path";
 import { IncomingMessage, Server } from "http";
 import { InvalidParamsError } from "../errors";
 import { isPath } from "../utils";
@@ -44,9 +46,33 @@ export const getFileRoute: RouteOptions = {
   },
   handler: async (request: Req, reply) => {
     try {
-      const result = fs.readFileSync(request.query.path);
+      // const result = fs.createReadStream(request.query.path, {
+      //   encoding: "utf8",
+      // });
 
-      return reply.status(200).send(result);
+      fs.readFile(request.query.path, (err, fileBuffer) => {
+        const base = path.basename(request.query.path);
+        const mimeType = mime.lookup(base);
+        reply
+          .headers({
+            "Content-Type": mimeType,
+            "Content-Disposition": `attachment; filename="${base}"`,
+          })
+          .send(err || fileBuffer);
+      });
+
+      // const base = path.basename(request.query.path);
+
+      // const parse = path.parse(base);
+
+      // const mimeType = mime.lookup(base);
+
+      // return reply
+      //   .headers({
+      //     "Content-Type": mimeType,
+      //     "Content-Disposition": `attachment; filename="${parse.name}${parse.ext}"`,
+      //   })
+      //   .send(result);
     } catch (err) {
       return reply.status(404).send(err);
     }

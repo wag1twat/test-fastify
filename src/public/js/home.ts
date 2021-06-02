@@ -1,4 +1,4 @@
-const moment = require("moment");
+import moment from "moment";
 
 (function () {
   const element = document.getElementById("h3-date");

@@ -7,6 +7,7 @@ export const homePageRoute: RouteOptions = {
     reply.view("home.pug", {
       title: "File Shared",
       header: "It's best file shared in the world!",
+      root: "/folder?path=/",
     });
   },
 };

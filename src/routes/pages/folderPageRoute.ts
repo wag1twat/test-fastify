@@ -45,8 +45,9 @@ export const folderPageRoute: RouteOptions = {
     }
   },
   handler: async (request: Req, reply) => {
+    const path = request.query.path === "" ? "/" : request.query.path;
     try {
-      const dirs = fs.readdirSync(request.query.path, {
+      const dirs = fs.readdirSync(path, {
         withFileTypes: true,
       });
 
@@ -55,11 +56,17 @@ export const folderPageRoute: RouteOptions = {
         isDirectory: dir.isDirectory(),
         isFile: dir.isFile(),
         path: dir.isFile()
-          ? request.url.replace("folder", "file") + dir.name
-          : request.url + dir.name,
+          ? request.url.replace("folder", "file") + "/" + dir.name
+          : request.url + "/" + dir.name,
       }));
 
-      return reply.view("folder.pug", { dirs: result, path: request.url });
+      return reply.view("folder.pug", {
+        dirs: result,
+        path: request.url,
+        prev: {
+          path: request.url.substr(0, request.url.lastIndexOf("/")),
+        },
+      });
     } catch (err) {
       return reply.status(404).callNotFound();
     }
